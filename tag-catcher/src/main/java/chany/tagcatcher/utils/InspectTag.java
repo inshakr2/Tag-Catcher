@@ -15,7 +15,7 @@ import java.io.IOException;
 public class InspectTag {
 
     // Read Tag.json file
-    public static String loadTagJson() throws IOException {
+    public static String readTagJson() throws IOException {
         ClassPathResource resource = new ClassPathResource("data/tag.json");
         String tag = ReadUtils.read(resource);
 

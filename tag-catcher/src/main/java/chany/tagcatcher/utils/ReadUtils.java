@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 /**
  * upload 받아오기
  *  : csv read
+ * +++ csv 외 직접 입력 txt 받아오기 추가
  * json 가져오기
  *  : ClassPathResource
  */
@@ -24,6 +25,8 @@ public class ReadUtils {
         return contents;
 
     }
+
+    
 
 }
 
