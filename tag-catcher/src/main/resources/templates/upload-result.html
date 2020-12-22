@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>upload-result</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>File Upload Status</h1>
+
+    <!-- If There is An Error -->
+    <div th:if="${!status}">
+        <strong>Error:</strong>
+        <span th:text="${INFO}"></span>
+    </div>
+
+    <!-- Lets Go! -->
+    <table>
+        <tr>
+            <th>No</th>
+            <th>Sentence</th>
+            <th>Result</th>
+            <th>Update</th>
+        </tr>
+        <tr th:each="sentence, i : ${sentences}">
+            <td th:text="${i.index + 1}"></td>
+            <td th:text="${sentence}"></td>
+            <td> Inspct Res Here </td>
+            <td>
+                <button>수정하기</button>
+                <button>삭제하기</button>
+            </td>
+        </tr>
+    </table>
+
+
+</body>
+</html>
