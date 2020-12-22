@@ -28,7 +28,7 @@ public class UploadController {
             model.addAttribute("status", false);
         } else {
 
-            try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
+            try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream() ,"EUC-KR"))) {
 
                 CsvToBean<Sentence> csvToBean = new CsvToBeanBuilder(reader)
                         .withType(Sentence.class)
@@ -36,7 +36,7 @@ public class UploadController {
                         .build();
 
                 List<Sentence> sentences = csvToBean.parse();
-
+//                System.out.println(sentences.get(0).getSentence());
                 //TODO -- TO DB
 
                 model.addAttribute("sentences", sentences);
