@@ -1,5 +1,6 @@
 package chany.tagcatcher.controller;
 
+import chany.tagcatcher.utils.Sentence;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -29,13 +30,12 @@ public class UploadController {
 
             try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
 
-
-                CsvToBean<String> csvToBean = new CsvToBeanBuilder(reader)
-                        .withType(String.class)
+                CsvToBean<Sentence> csvToBean = new CsvToBeanBuilder(reader)
+                        .withType(Sentence.class)
                         .withIgnoreLeadingWhiteSpace(true)
                         .build();
 
-                List<String> sentences = csvToBean.parse();
+                List<Sentence> sentences = csvToBean.parse();
                 System.out.println(sentences.toString());
                 //TODO -- TO DB
 
@@ -43,7 +43,7 @@ public class UploadController {
                 model.addAttribute("status", true);
                 model.addAttribute("how", "csv");
 
-            } catch (IOException | CsvException e) {
+            } catch (IOException e) {
                 model.addAttribute("INFO", "An error occurred while processing the CSV file.");
                 model.addAttribute("status", false);
             }
