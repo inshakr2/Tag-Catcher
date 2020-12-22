@@ -36,7 +36,7 @@ public class UploadController {
                         .build();
 
                 List<Sentence> sentences = csvToBean.parse();
-                System.out.println(sentences.toString());
+
                 //TODO -- TO DB
 
                 model.addAttribute("sentences", sentences);

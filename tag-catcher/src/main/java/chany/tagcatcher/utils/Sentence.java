@@ -9,6 +9,9 @@ public class Sentence {
     @CsvBindByName
     private int id;
 
+    public Sentence(){
+
+    }
 
     public Sentence(int id, String sentence) {
         this.id = id;
