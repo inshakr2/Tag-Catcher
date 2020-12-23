@@ -38,8 +38,11 @@ public class UploadController {
                 //TODO -- TO DB
 
                 model.addAttribute("sentences", sentences);
+                //TODO -- InsepctTag 생성 완료후 추출된 sentences 문장들 검사 결과를 Check 객체로 저장
+                // model.addAttribute("InspectResult",Check)
                 model.addAttribute("status", true);
                 model.addAttribute("how", "csv");
+
 
             } catch (IOException e) {
                 model.addAttribute("INFO", "An error occurred while processing the CSV file.");
