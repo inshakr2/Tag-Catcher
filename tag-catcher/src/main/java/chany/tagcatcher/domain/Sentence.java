@@ -1,4 +1,4 @@
-package chany.tagcatcher.utils;
+package chany.tagcatcher.domain;
 
 import com.opencsv.bean.CsvBindByName;
 

@@ -1,10 +1,8 @@
 package chany.tagcatcher.controller;
 
-import chany.tagcatcher.utils.Sentence;
-import com.opencsv.CSVReader;
+import chany.tagcatcher.domain.Sentence;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
-import com.opencsv.exceptions.CsvException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +28,7 @@ public class UploadController {
 
             try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream() ,"EUC-KR"))) {
 
-                CsvToBean<Sentence> csvToBean = new CsvToBeanBuilder(reader)
+                CsvToBean csvToBean = new CsvToBeanBuilder(reader)
                         .withType(Sentence.class)
                         .withIgnoreLeadingWhiteSpace(true)
                         .build();
