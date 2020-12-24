@@ -48,4 +48,28 @@ public class InspectTag {
         return tags;
     }
 
+    // < , > 갯수 비교
+    public static boolean CountClamp(String sentence) throws IOException {
+        int left = 0 ;
+        int right = 0 ;
+        boolean result = false;
+
+        for(int i=0; i < sentence.length(); i++) {
+            if(sentence.charAt(i) == '<') {
+                left++;
+            }
+        }
+        for(int i=0; i < sentence.length(); i++) {
+            if(sentence.charAt(i) == '>') {
+                right++;
+            }
+        }
+        if(left == right) {
+            result = true;
+        }
+
+        return result;
+
+    }
+
 }
