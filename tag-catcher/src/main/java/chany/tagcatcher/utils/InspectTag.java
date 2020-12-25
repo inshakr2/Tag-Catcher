@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 
 public class InspectTag {
 
-    public boolean check(String sentence) throws IOException {
+    public static boolean check(String sentence) throws IOException {
         boolean result = true;
 
         if(CountClamp(sentence)) {
