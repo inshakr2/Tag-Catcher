@@ -34,6 +34,10 @@ public class UploadController {
                         .build();
 
                 List<Sentence> sentences = csvToBean.parse();
+
+                for (Sentence sentence : sentences) {
+                    sentence.setResult();
+                }
 //                System.out.println(sentences.get(0).getSentence());
                 //TODO -- TO DB
 
