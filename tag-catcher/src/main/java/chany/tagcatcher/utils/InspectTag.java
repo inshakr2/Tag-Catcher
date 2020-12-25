@@ -92,4 +92,25 @@ public class InspectTag {
         return tagsInSentence;
     }
 
+    public static boolean IsinTag(String tagsInSentence) throws IndexOutOfBoundsException, IOException {
+
+        List<String> tag = getTag();
+
+        boolean result = false;
+
+        Pattern p = Pattern.compile(":.*>");
+        Matcher m = p.matcher(tagsInSentence);
+        m.find();
+        String testing = m.group().substring(1,4);
+
+        for (int j=0; j<tag.size(); j++){
+            if (testing.equals(tag.get(j))) {
+                result = true;
+            }
+        }
+
+
+        return result;
+    }
+
 }
