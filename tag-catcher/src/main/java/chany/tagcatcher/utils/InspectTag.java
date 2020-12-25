@@ -81,4 +81,15 @@ public class InspectTag {
 
     }
 
+    public static List<String> TagMatcher(String sentence) throws IOException {
+
+        Pattern tagPattern = Pattern.compile("<.[^<]*?:[a-zA-Z가-힣\\s]*>");
+        Matcher tagMatcher = tagPattern.matcher(sentence);
+        List<String> tagsInSentence = new ArrayList<String>();
+        while(tagMatcher.find()) {
+            tagsInSentence.add(tagMatcher.group());
+        }
+        return tagsInSentence;
+    }
+
 }
