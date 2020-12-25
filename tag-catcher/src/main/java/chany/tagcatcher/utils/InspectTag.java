@@ -18,13 +18,23 @@ import java.util.regex.Pattern;
 
 public class InspectTag {
 
-    public boolean check(String sentence) {
-        // clamp 체크
-        //  | pass => tag 검사
-        //      | pass => true
-        //  | else => false
+    public boolean check(String sentence) throws IOException {
+        boolean result = true;
 
-        return false;
+        if(CountClamp(sentence)) {
+            List<String> tagsInSentence = TagMatcher(sentence);
+            for(String extractedTag : tagsInSentence) {
+
+                if (IsinTag(extractedTag) == false) {
+                    result = false;
+                    break;
+                }
+            }
+        } else {
+            result = false;
+        }
+
+        return result;
     }
 
     // Read Tag.json file
