@@ -18,6 +18,15 @@ import java.util.regex.Pattern;
 
 public class InspectTag {
 
+    public boolean check(String sentence) {
+        // clamp 체크
+        //  | pass => tag 검사
+        //      | pass => true
+        //  | else => false
+
+        return false;
+    }
+
     // Read Tag.json file
     public static String readTagJson() throws IOException {
         ClassPathResource resource = new ClassPathResource("data/tag.json");
