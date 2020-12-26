@@ -56,4 +56,14 @@ public class UploadController {
 
         return "upload-result";
     }
+
+    @PostMapping("/upload-text")
+    public String uploadCSVFile(@RequestParam("text") String text, Model model) {
+
+        model.addAttribute("status",true);
+        model.addAttribute("text", text);
+        model.addAttribute("how", "text");
+
+        return "upload-result";
+    }
 }

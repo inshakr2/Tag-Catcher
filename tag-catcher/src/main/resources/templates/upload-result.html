@@ -14,23 +14,29 @@
     </div>
 
     <!-- Lets Go! -->
-    <table>
-        <tr>
-            <th>No</th>
-            <th>Sentence</th>
-            <th>Result</th>
-            <th>Update</th>
-        </tr>
-        <tr th:each="sentence: ${sentences}">
-            <td th:text="${sentence.id}"></td>
-            <td th:text="${sentence.sentence}"></td>
-            <td th:text="${sentence.result}"></td>
-            <td>
-                <button>수정하기</button>
-                <button>삭제하기</button>
-            </td>
-        </tr>
-    </table>
+    <div th:if="${how == 'csv'}">
+        <table>
+            <tr>
+                <th>No</th>
+                <th>Sentence</th>
+                <th>Result</th>
+                <th>Update</th>
+            </tr>
+            <tr th:each="sentence: ${sentences}">
+                <td th:text="${sentence.id}"></td>
+                <td th:text="${sentence.sentence}"></td>
+                <td th:text="${sentence.result}"></td>
+                <td>
+                    <button>수정하기</button>
+                    <button>삭제하기</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div th:if="${how == 'text'}">
+        <p th:text="${text}">aa</p>
+    </div>
 
 
 </body>
