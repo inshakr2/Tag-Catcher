@@ -6,12 +6,19 @@
 </head>
 <body>
 <h3>문장 검사 시작하기</h3>
+<h5> csv file을 upload 하시거나 직접 text를 입력하고 import 하세요.</h5>
 Select a file to upload:
 <br />
 <form action='/upload-csv' method='post' enctype="multipart/form-data" accept-charset="UTF-8">
     <input type="file" name="file">
     <br><br>
     <input type="submit" value="Import CSV">
+</form>
+<br />
+<hr>
+<form action="/upload-text" method='post'>
+    <p><textarea name="text"cols="200" rows="15" placeholder="Input some Tagged text."></textarea></p>
+    <p><input type="submit" value="Import text"></p>
 </form>
 </body>
 </html>
