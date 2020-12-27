@@ -35,7 +35,10 @@
     </div>
 
     <div th:if="${how == 'text'}">
-        <p th:text="${text}">aa</p>
+        <div style="white-space:pre;">
+            <pre th:utext="${text}">aa</pre>
+        </div>
+
     </div>
 
 
