@@ -14,7 +14,6 @@
     </div>
 
     <!-- Lets Go! -->
-    <div th:if="${how == 'csv'}">
         <table>
             <tr>
                 <th>No</th>
@@ -32,14 +31,6 @@
                 </td>
             </tr>
         </table>
-    </div>
-
-    <div th:if="${how == 'text'}">
-        <div style="white-space:pre;">
-            <pre th:utext="${text}">aa</pre>
-        </div>
-
-    </div>
 
 
 </body>

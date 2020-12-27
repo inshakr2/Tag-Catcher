@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -43,7 +44,6 @@ public class UploadController {
 
                 model.addAttribute("sentences", sentences);
                 model.addAttribute("status", true);
-                model.addAttribute("how", "csv");
 
 
             } catch (IOException e) {
@@ -56,12 +56,28 @@ public class UploadController {
     }
 
     @PostMapping("/upload-text")
-    public String uploadCSVFile(@RequestParam("text") String text, Model model) {
+    public String uploadCSVFile(@RequestParam("text") String text, Model model) throws IOException {
 
-        model.addAttribute("status",true);
-        model.addAttribute("text", text.replaceAll("\\r\\n","<br/>"));
-        model.addAttribute("how", "text");
+        if (text.isBlank()) {
+            model.addAttribute("status",false);
+            model.addAttribute("INFO", "Enter Text And Try again");
 
+        } else {
+
+            List<Sentence> sentences = new ArrayList<Sentence>();
+            String[] texts =  text.split("\\r\\n");
+
+            for (int i = 1; i < texts.length; i++) {
+                sentences.add(new Sentence(i, texts[i]));
+            }
+
+
+            model.addAttribute("status", true);
+            model.addAttribute("sentences", sentences);
+
+
+        }
         return "upload-result";
+
     }
 }

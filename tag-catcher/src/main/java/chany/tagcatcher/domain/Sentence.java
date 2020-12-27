@@ -24,6 +24,12 @@ public class Sentence {
     public Sentence(){
     }
 
+    public Sentence(int id, String sentence) throws IOException {
+        setId(id);
+        setSentence(sentence);
+        setResult();
+    }
+
     public int getId() {
 
         return id;
