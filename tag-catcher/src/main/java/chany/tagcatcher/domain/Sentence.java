@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.IOException;
 
+
 @Entity
 public class Sentence {
 
@@ -16,18 +17,32 @@ public class Sentence {
     @CsvBindByName
     private String sentence;
     @CsvBindByName
-    private int id;
+    private Long id;
+
+    private boolean result;
+
+    public boolean getResult() {
+        return result;
+    }
+
+    public void setResult() {
+        try {
+            this.result = InspectTag.check(getSentence());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public Sentence(){
     }
 
 
-    public int getId() {
+    public Long getId() {
 
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
 
         this.id = id;
     }

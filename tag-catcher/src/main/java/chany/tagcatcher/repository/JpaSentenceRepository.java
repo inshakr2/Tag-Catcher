@@ -16,6 +16,7 @@ public class JpaSentenceRepository implements SentenceRepository {
 
     @Override
     public Sentence save(Sentence sentence) {
+        sentence.setResult();
         em.persist(sentence);
         return sentence;
     }
@@ -28,7 +29,7 @@ public class JpaSentenceRepository implements SentenceRepository {
 
     @Override
     public List<Sentence> findAll() {
-        List<Sentence> result = em.createQuery("select sen from DemoSentence sen", Sentence.class)
+        List<Sentence> result = em.createQuery("select sen from Sentence sen", Sentence.class)
                 .getResultList();
         return result;
     }

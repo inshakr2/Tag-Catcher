@@ -7,7 +7,6 @@ import java.util.List;
 public interface SentenceRepository {
 
     Sentence save(Sentence sentence);
-
     Sentence findById(Long id);
     List<Sentence> findAll();
 }
