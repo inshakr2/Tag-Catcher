@@ -10,6 +10,4 @@ public interface SentenceRepository {
     Sentence findById(Long id);
     List<Sentence> findAll();
 
-    Sentence modifyById(Long id);
-    Sentence deleteById(Long id);
 }
