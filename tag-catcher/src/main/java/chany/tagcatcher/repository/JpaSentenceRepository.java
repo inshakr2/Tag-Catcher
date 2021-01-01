@@ -33,4 +33,16 @@ public class JpaSentenceRepository implements SentenceRepository {
                 .getResultList();
         return result;
     }
+
+    @Override
+    public Sentence modifyById(Long id) {
+        return null;
+    }
+
+    @Override
+    public Sentence deleteById(Long id) {
+        return null;
+    }
+
+
 }

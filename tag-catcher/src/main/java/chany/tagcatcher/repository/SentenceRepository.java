@@ -9,4 +9,7 @@ public interface SentenceRepository {
     Sentence save(Sentence sentence);
     Sentence findById(Long id);
     List<Sentence> findAll();
+
+    Sentence modifyById(Long id);
+    Sentence deleteById(Long id);
 }
