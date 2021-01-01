@@ -1,6 +1,6 @@
 package chany.tagcatcher.repository;
 
-import chany.tagcatcher.domain.DemoSentence;
+import chany.tagcatcher.domain.Sentence;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -15,20 +15,20 @@ public class JpaSentenceRepository implements SentenceRepository {
 
 
     @Override
-    public DemoSentence save(DemoSentence sentence) {
+    public Sentence save(Sentence sentence) {
         em.persist(sentence);
         return sentence;
     }
 
     @Override
-    public DemoSentence findById(Long id) {
-        DemoSentence sentence = em.find(DemoSentence.class, id);
+    public Sentence findById(Long id) {
+        Sentence sentence = em.find(Sentence.class, id);
         return sentence;
     }
 
     @Override
-    public List<DemoSentence> findAll() {
-        List<DemoSentence> result = em.createQuery("select sen from DemoSentence sen", DemoSentence.class)
+    public List<Sentence> findAll() {
+        List<Sentence> result = em.createQuery("select sen from DemoSentence sen", Sentence.class)
                 .getResultList();
         return result;
     }

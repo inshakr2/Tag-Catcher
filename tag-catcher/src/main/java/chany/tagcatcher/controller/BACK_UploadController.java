@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class DemoUploadController {
+public class BACK_UploadController {
 
     @PostMapping("/upload-csv")
     public String uploadCSVFile(@RequestParam("file") MultipartFile file, Model model) {
@@ -36,9 +36,9 @@ public class DemoUploadController {
 
                 List<Sentence> sentences = csvToBean.parse();
 
-                for (Sentence sentence : sentences) {
-                    sentence.setResult();
-                }
+//                for (Sentence sentence : sentences) {
+//                    sentence.setResult();
+//                }
 //                System.out.println(sentences.get(0).getSentence());
                 //TODO -- TO DB
 
@@ -67,9 +67,9 @@ public class DemoUploadController {
             List<Sentence> sentences = new ArrayList<Sentence>();
             String[] texts =  text.split("\\r\\n");
 
-            for (int i = 1; i < texts.length; i++) {
-                sentences.add(new Sentence(i, texts[i]));
-            }
+//            for (int i = 1; i < texts.length; i++) {
+//                sentences.add(new Sentence(i, texts[i]));
+//            }
 
 
             model.addAttribute("status", true);

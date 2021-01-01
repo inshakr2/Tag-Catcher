@@ -3,32 +3,24 @@ package chany.tagcatcher.domain;
 import chany.tagcatcher.utils.InspectTag;
 import com.opencsv.bean.CsvBindByName;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.IOException;
 
+@Entity
 public class Sentence {
 
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @CsvBindByName
     private String sentence;
     @CsvBindByName
     private int id;
-    private boolean result;
-
-    public boolean getResult() {
-        return result;
-    }
-
-    public void setResult() throws IOException {
-        this.result = InspectTag.check(this.sentence);
-    }
 
     public Sentence(){
     }
 
-    public Sentence(int id, String sentence) throws IOException {
-        setId(id);
-        setSentence(sentence);
-        setResult();
-    }
 
     public int getId() {
 

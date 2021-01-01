@@ -36,10 +36,7 @@ public class UploadController {
 
                 List<Sentence> sentences = csvToBean.parse();
 
-                for (Sentence sentence : sentences) {
-                    sentence.setResult();
-                }
-//                System.out.println(sentences.get(0).getSentence());
+
                 //TODO -- TO DB
 
                 model.addAttribute("sentences", sentences);
@@ -67,9 +64,7 @@ public class UploadController {
             List<Sentence> sentences = new ArrayList<Sentence>();
             String[] texts =  text.split("\\r\\n");
 
-            for (int i = 1; i < texts.length; i++) {
-                sentences.add(new Sentence(i, texts[i]));
-            }
+
 
 
             model.addAttribute("status", true);
