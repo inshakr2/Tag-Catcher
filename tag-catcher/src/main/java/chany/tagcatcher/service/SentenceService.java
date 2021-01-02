@@ -5,6 +5,7 @@ import chany.tagcatcher.repository.SentenceRepository;
 import org.apache.catalina.startup.SetNextNamingRule;
 
 import java.util.List;
+import java.util.Optional;
 
 public class SentenceService {
 
@@ -26,7 +27,7 @@ public class SentenceService {
     /**
      * id 값으로 조회
      */
-    public Sentence findOne(Long id) {
+    public Optional<Sentence> findOne(Long id) {
         return sentenceRepository.findById(id);
     }
 

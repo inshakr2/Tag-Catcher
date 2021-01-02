@@ -4,6 +4,7 @@ import chany.tagcatcher.domain.Sentence;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 public class JpaSentenceRepository implements SentenceRepository {
 
@@ -17,14 +18,17 @@ public class JpaSentenceRepository implements SentenceRepository {
     @Override
     public Sentence save(Sentence sentence) {
         sentence.setResult();
+        sentence.setOrgSentence();
         em.persist(sentence);
         return sentence;
     }
 
     @Override
-    public Sentence findById(Long id) {
+    public Optional<Sentence> findById(Long id) {
+
         Sentence sentence = em.find(Sentence.class, id);
-        return sentence;
+        return Optional.ofNullable(sentence);
+
     }
 
     @Override
@@ -33,5 +37,6 @@ public class JpaSentenceRepository implements SentenceRepository {
                 .getResultList();
         return result;
     }
+
 
 }

@@ -27,7 +27,7 @@ public class Sentence {
         return orgSentence;
     }
 
-    public void setOrgSentence(String orgSentence) {
+    public void setOrgSentence() {
         this.orgSentence = TagToOrg.Convert(getSentence());
     }
 
