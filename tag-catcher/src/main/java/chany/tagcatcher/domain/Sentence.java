@@ -1,6 +1,7 @@
 package chany.tagcatcher.domain;
 
 import chany.tagcatcher.utils.InspectTag;
+import chany.tagcatcher.utils.TagToOrg;
 import com.opencsv.bean.CsvBindByName;
 
 import javax.persistence.Entity;
@@ -13,13 +14,22 @@ import java.io.IOException;
 @Entity
 public class Sentence {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @CsvBindByName
     private String sentence;
-    @CsvBindByName
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private boolean result;
+    private String orgSentence;
+
+    public String getOrgSentence() {
+        return orgSentence;
+    }
+
+    public void setOrgSentence(String orgSentence) {
+        this.orgSentence = TagToOrg.Convert(getSentence());
+    }
 
     public boolean getResult() {
         return result;
