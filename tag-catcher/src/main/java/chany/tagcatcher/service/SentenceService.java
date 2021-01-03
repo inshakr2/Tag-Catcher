@@ -32,6 +32,18 @@ public class SentenceService {
         return sentenceRepository.findById(id);
     }
 
+    public Optional<Sentence> updateById(Long id, String updateSentence) {
+        Optional<Sentence> sentence = sentenceRepository.findById(id);
+
+        sentence.ifPresent(newSentence -> {
+            newSentence.setSentence(updateSentence);
+            newSentence.setResult();
+            newSentence.setOrgSentence();
+            sentenceRepository.save(newSentence);
+        });
+        return sentence;
+    }
+
     /**
      * 전체 조회
      */
