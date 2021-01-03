@@ -1,8 +1,10 @@
 package chany.tagcatcher.controller;
 
 import chany.tagcatcher.domain.Sentence;
+import chany.tagcatcher.service.SentenceService;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +20,13 @@ import java.util.List;
 
 @Controller
 public class UploadController {
+
+    private SentenceService sentenceService;
+
+    @Autowired
+    public UploadController(SentenceService sentenceService) {
+        this.sentenceService = sentenceService;
+    }
 
     @PostMapping("/upload-csv")
     public String uploadCSVFile(@RequestParam("file") MultipartFile file, Model model) {

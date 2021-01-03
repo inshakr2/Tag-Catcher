@@ -18,6 +18,8 @@ public class SentenceService {
      * sentence 객체 등록
      */
     public Long regist(Sentence sentence) {
+        sentence.setResult();
+        sentence.setOrgSentence();
         sentenceRepository.save(sentence);
         return sentence.getId();
 
