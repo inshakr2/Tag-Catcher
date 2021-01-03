@@ -32,6 +32,12 @@ public class SentenceService {
         return sentenceRepository.findById(id);
     }
 
+
+    /**
+     * id 값으로 조회 후
+     * updateSentence로 문장 수정
+     * result, orgSentence 모두 재세팅 후 save
+     */
     public Optional<Sentence> updateById(Long id, String updateSentence) {
         Optional<Sentence> sentence = sentenceRepository.findById(id);
 
