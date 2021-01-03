@@ -1,13 +1,18 @@
 package chany.tagcatcher.service;
 
 import chany.tagcatcher.domain.Sentence;
+import chany.tagcatcher.repository.SentenceRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 public class SentenceService {
 
+    private SentenceRepository sentenceRepository;
 
+    public SentenceService(SentenceRepository sentenceRepository) {
+        this.sentenceRepository = sentenceRepository;
+    }
 
     /**
      * sentence 객체 등록
