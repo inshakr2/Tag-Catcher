@@ -51,6 +51,18 @@ public class SentenceService {
     }
 
     /**
+     * id 값으로 문장 삭제
+     */
+    public void deleteOne(Long id) {
+
+        sentenceRepository.findById(id)
+                .ifPresent(action -> {
+                    sentenceRepository.deleteById(id);
+                });
+
+    }
+
+    /**
      * 전체 조회
      */
     public List<Sentence> findAll() {
