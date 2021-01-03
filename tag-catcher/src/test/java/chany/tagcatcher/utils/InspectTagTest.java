@@ -1,4 +1,4 @@
-package utils;
+package chany.tagcatcher.utils;
 
 import chany.tagcatcher.utils.InspectTag;
 import chany.tagcatcher.utils.ReadUtils;
