@@ -3,6 +3,8 @@ package chany.tagcatcher.domain;
 import chany.tagcatcher.utils.InspectTag;
 import chany.tagcatcher.utils.TagToOrg;
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvCustomBindByPosition;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +17,7 @@ import java.io.IOException;
 public class Sentence {
 
 
-    @CsvBindByName
+    @CsvBindByPosition(position = 0)
     private String sentence;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
