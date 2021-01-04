@@ -45,16 +45,20 @@ public class UploadController {
 
                 List<Sentence> sentences = csvToBean.parse();
 
+                for(Sentence sentence : sentences) {
+                    sentenceService.regist(sentence);
+                }
 
                 //TODO -- TO DB
 
-                model.addAttribute("sentences", sentences);
+                model.addAttribute("sentences", sentenceService.findAll());
                 model.addAttribute("status", true);
 
 
             } catch (IOException e) {
                 model.addAttribute("INFO", "An error occurred while processing the CSV file.");
                 model.addAttribute("status", false);
+                e.printStackTrace();
             }
         }
 
