@@ -74,14 +74,19 @@ public class UploadController {
 
         } else {
 
-            List<Sentence> sentences = new ArrayList<Sentence>();
             String[] texts =  text.split("\\r\\n");
+
+            for (String row : texts) {
+                Sentence sentence = new Sentence();
+                sentence.setSentence(row);
+                sentenceService.regist(sentence);
+            }
 
 
 
 
             model.addAttribute("status", true);
-            model.addAttribute("sentences", sentences);
+            model.addAttribute("sentences", sentenceService.findAll());
 
 
         }
