@@ -87,18 +87,22 @@
                 <td>
                     <button class="open-button" th:onclick="openForm([[${sentence.id}]])">수정하기</button>
                     <div class="form-popup" th:id="'myForm' + ${sentence.id}">
-                        <form action="update" method="get" class="form-container">
+                        <form action="/update" method="get" class="form-container">
                             <h1>Update</h1>
 
-                            <label for="updateSentence"><b>수정할 문장을 입력하세요</b></label>
+                            <label><b>수정할 문장을 입력하세요</b></label>
                             <input type="text" th:value="${sentence.sentence}" name="sentence" required>
-                            <input type="hidden" th:value="${sentence.id}" name="sentence_id">
+                            <input type="hidden" th:value="${sentence.id}" name="id">
 
                             <button type="submit" class="btn">수정하기</button>
                             <button type="button" class="btn cancel" th:onclick="closeForm([[${sentence.id}]])">닫기</button>
                         </form>
                     </div>
-                    <button>삭제하기</button>
+
+                    <form action="/delete" method="get">
+                        <button>삭제하기</button>
+                        <input type="hidden" th:value="${sentence.id}" name="id">
+                    </form>
                 </td>
             </tr>
         </table>
