@@ -26,11 +26,17 @@ public class UpdateDeleteController {
     public String updateSentence(@RequestParam("id") Long id,
                                  @RequestParam("sentence") String sentence,
                                  Model model) {
-        return "redirect:/refresh";
+
+        sentenceService.updateById(id, sentence);
+        model.addAttribute("status", true);
+        model.addAttribute("sentences", sentenceService.findAll());
+
+        return "upload-result";
     }
 
     @GetMapping("/delete")
     public String deleteSentence(@RequestParam("id") Long id, Model model) {
+
 
         try {
             sentenceService.deleteOne(id);
