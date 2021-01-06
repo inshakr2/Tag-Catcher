@@ -43,15 +43,15 @@ public class UploadController {
                         .withIgnoreLeadingWhiteSpace(true)
                         .build();
 
-                List<Sentence> sentences = csvToBean.parse();
+                List<Sentence> uploadSentences = csvToBean.parse();
 
-                for(Sentence sentence : sentences) {
+                for(Sentence sentence : uploadSentences) {
                     sentenceService.regist(sentence);
                 }
 
-                //TODO -- TO DB
+                List<Sentence> sentences = sentenceService.findAll();
 
-                model.addAttribute("sentences", sentenceService.findAll());
+                model.addAttribute("sentences", sentences);
                 model.addAttribute("status", true);
 
 
@@ -82,11 +82,11 @@ public class UploadController {
                 sentenceService.regist(sentence);
             }
 
-
+            List<Sentence> sentences = sentenceService.findAll();
 
 
             model.addAttribute("status", true);
-            model.addAttribute("sentences", sentenceService.findAll());
+            model.addAttribute("sentences", sentences);
 
 
         }
