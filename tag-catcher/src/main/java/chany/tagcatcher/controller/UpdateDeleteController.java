@@ -27,9 +27,18 @@ public class UpdateDeleteController {
                                  @RequestParam("sentence") String sentence,
                                  Model model) {
 
-        sentenceService.updateById(id, sentence);
-        model.addAttribute("status", true);
-        model.addAttribute("sentences", sentenceService.findAll());
+        try {
+
+            sentenceService.updateById(id, sentence);
+
+            List<Sentence> sentences = sentenceService.findAll();
+            model.addAttribute("status", true);
+            model.addAttribute("sentences", sentences);
+        } catch (Exception e) {
+            model.addAttribute("INFO", "an Error occur in update sentence");
+            model.addAttribute("status", false);
+            e.printStackTrace();
+        }
 
         return "upload-result";
     }
