@@ -7,11 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    @GetMapping("findDB")
-    public String toFindDB(Model model) {
-        return "findDB";
-    }
-
     @GetMapping("upload")
     public String toUpload(Model model) {
         return "upload";
