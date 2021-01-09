@@ -2,6 +2,7 @@ package chany.tagcatcher.service;
 
 import chany.tagcatcher.domain.Sentence;
 import chany.tagcatcher.repository.SentenceRepository;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 import java.util.Optional;
@@ -66,7 +67,7 @@ public class SentenceService {
      * 전체 조회
      */
     public List<Sentence> findAll() {
-        return sentenceRepository.findAll();
+        return sentenceRepository.findAll(Sort.by("result"));
     }
 
 
