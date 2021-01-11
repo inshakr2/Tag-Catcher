@@ -65,7 +65,9 @@
 </head>
 <body>
     <h1>File Upload Status</h1>
-
+    <form action="upload">
+        <input type="submit" value="되돌아가기">
+    </form>
     <!-- If There is An Error -->
     <div th:if="${!status}">
         <strong>Error:</strong>
