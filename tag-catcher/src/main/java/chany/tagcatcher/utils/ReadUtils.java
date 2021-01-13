@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * upload 받아오기
@@ -30,11 +32,20 @@ public class ReadUtils {
 
     public static List<Sentence> readCsv(MultipartFile file) {
 
-        return List < Sentence >;
+        return List<Sentence>;
     }
 
     public static List<Sentence> readTextarea(String text) {
-        return List < Sentence >;
+
+        String[] texts = text.split("\\r\\n");
+        List<Sentence> sentences = new ArrayList<>();
+        for (String row : texts) {
+            Sentence sentence = new Sentence();
+            sentence.setSentence(row);
+            sentences.add(sentence);
+        }
+
+        return sentences;
     }
 
     
