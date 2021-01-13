@@ -1,6 +1,8 @@
 package chany.tagcatcher.utils;
 
+import chany.tagcatcher.domain.Sentence;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -24,6 +26,15 @@ public class ReadUtils {
 
         return contents;
 
+    }
+
+    public static List<Sentence> readCsv(MultipartFile file) {
+
+        return List < Sentence >;
+    }
+
+    public static List<Sentence> readTextarea(String text) {
+        return List < Sentence >;
     }
 
     
