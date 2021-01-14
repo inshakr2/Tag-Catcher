@@ -1,10 +1,15 @@
 package chany.tagcatcher.utils;
 
 import chany.tagcatcher.domain.Sentence;
+import com.opencsv.bean.CsvToBean;
+import com.opencsv.bean.CsvToBeanBuilder;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -32,7 +37,20 @@ public class ReadUtils {
 
     public static List<Sentence> readCsv(MultipartFile file) {
 
-        return List<Sentence>;
+        try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream() ,"EUC-KR"))) {
+
+            CsvToBean csvToBean = new CsvToBeanBuilder(reader)
+                    .withType(Sentence.class)
+                    .withIgnoreLeadingWhiteSpace(true)
+                    .build();
+
+            List<Sentence> sentences = csvToBean.parse();
+            return sentences;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public static List<Sentence> readTextarea(String text) {
