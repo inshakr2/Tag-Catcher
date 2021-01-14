@@ -18,6 +18,8 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static chany.tagcatcher.utils.ReadUtils.readTextarea;
+
 @Controller
 public class UploadController {
 
@@ -74,11 +76,8 @@ public class UploadController {
 
         } else {
 
-            String[] texts =  text.split("\\r\\n");
-
-            for (String row : texts) {
-                Sentence sentence = new Sentence();
-                sentence.setSentence(row);
+            List<Sentence> textarea = readTextarea(text);
+            for (Sentence sentence : textarea) {
                 sentenceService.regist(sentence);
             }
 
