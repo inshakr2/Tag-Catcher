@@ -18,6 +18,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static chany.tagcatcher.utils.ReadUtils.readCsv;
 import static chany.tagcatcher.utils.ReadUtils.readTextarea;
 
 @Controller
@@ -38,14 +39,9 @@ public class UploadController {
             model.addAttribute("status", false);
         } else {
 
-            try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream() ,"EUC-KR"))) {
+            try {
 
-                CsvToBean csvToBean = new CsvToBeanBuilder(reader)
-                        .withType(Sentence.class)
-                        .withIgnoreLeadingWhiteSpace(true)
-                        .build();
-
-                List<Sentence> uploadSentences = csvToBean.parse();
+                List<Sentence> uploadSentences = readCsv(file);
 
                 for(Sentence sentence : uploadSentences) {
                     sentenceService.regist(sentence);
@@ -57,7 +53,7 @@ public class UploadController {
                 model.addAttribute("status", true);
 
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 model.addAttribute("INFO", "An error occurred while processing the CSV file.");
                 model.addAttribute("status", false);
                 e.printStackTrace();
