@@ -2,8 +2,6 @@ package chany.tagcatcher.controller;
 
 import chany.tagcatcher.domain.Sentence;
 import chany.tagcatcher.service.SentenceService;
-import com.opencsv.bean.CsvToBean;
-import com.opencsv.bean.CsvToBeanBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.util.ArrayList;
 import java.util.List;
 
 import static chany.tagcatcher.utils.ReadUtils.readCsv;
@@ -47,7 +41,7 @@ public class UploadController {
                     sentenceService.regist(sentence);
                 }
 
-                List<Sentence> sentences = sentenceService.findAll();
+                List<Sentence> sentences = sentenceService.findAllSortByResult();
 
                 model.addAttribute("sentences", sentences);
                 model.addAttribute("status", true);
@@ -77,7 +71,7 @@ public class UploadController {
                 sentenceService.regist(sentence);
             }
 
-            List<Sentence> sentences = sentenceService.findAll();
+            List<Sentence> sentences = sentenceService.findAllSortByResult();
 
 
             model.addAttribute("status", true);

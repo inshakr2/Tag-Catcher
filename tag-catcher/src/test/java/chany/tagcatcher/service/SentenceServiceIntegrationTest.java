@@ -74,7 +74,7 @@ class SentenceServiceIntegrationTest {
         sentenceService.deleteOne(registId);
 
         //then
-        List<Sentence> whole = sentenceService.findAll();
+        List<Sentence> whole = sentenceService.findAllSortByResult();
         assertThat(whole.size()).isEqualTo(1);
     }
 }

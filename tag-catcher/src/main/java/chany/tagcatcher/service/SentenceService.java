@@ -65,9 +65,17 @@ public class SentenceService {
 
     /**
      * 전체 조회
+     * Tag 검사 False 상위 노출
+     */
+    public List<Sentence> findAllSortByResult() {
+        return sentenceRepository.findAll(Sort.by("result"));
+    }
+
+    /**
+     * 전체 조회
      */
     public List<Sentence> findAll() {
-        return sentenceRepository.findAll(Sort.by("result"));
+        return sentenceRepository.findAll();
     }
 
 
