@@ -13,6 +13,11 @@
             <th> Origin Sentence </th>
             <th> Tagging Sentence </th>
         </tr>
+        <tr th:each="sentence: ${sentences}">
+            <td th:text="${sentence.id}"></td>
+            <td th:text="${sentence.orgSentence}"></td>
+            <td th:text="${sentence.sentence}"></td>
+        </tr>
     </table>
 </fieldset>
 </body>
