@@ -5,10 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HomeController {
+public class SaveController {
 
-    @GetMapping("upload")
-    public String toUploadPage(Model model) {
-        return "upload";
+    @GetMapping("save")
+    public String toSavePage(Model model) {
+        return "save";
     }
 }
