@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 @Controller
-public class SaveController {
+public class ExportController {
 
     private SentenceService sentenceService;
 
-    public SaveController(SentenceService sentenceService) {
+    public ExportController(SentenceService sentenceService) {
         this.sentenceService = sentenceService;
     }
 
-    @GetMapping("save")
-    public String toSavePage(Model model) {
+    @GetMapping("export")
+    public String exportTable(Model model) {
 
         try {
 
@@ -41,6 +41,6 @@ public class SaveController {
         }
 
 
-        return "save";
+        return "export";
     }
 }
